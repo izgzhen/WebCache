@@ -1,0 +1,25 @@
+#msg {
+    height: 400px;
+    background: none;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+td {
+    min-width: 100px;
+    text-align: center;
+}
+
+#data-cache, #inst-cache, #inst-cache-control, #data-cache-control {
+    min-height: 200px;
+}
+
+.title {
+    text-align: center;
+}
+
+#din {
+    display: none;
+}

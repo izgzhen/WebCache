@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>WebCache Simulator</title>
+        <link rel="stylesheet" href="assets/css/foundation.min.css">
+        <link rel="stylesheet" href="assets/css/app.css">
+        <link rel="stylesheet" href="src/main.css">
+        <script type="text/javascript" src="src/common.js"></script>
+        <script type="text/javascript" src="src/sim.js"></script>
+        <script type="text/javascript" src="src/main.js"></script>
+    </head>
+    <body onload="reset();">
+        <div class="row title">
+            <h2>WebCache Simulator</h2>
+            <span>By Zhen Zhang</span>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="large-4 medium-4 columns">
+                <h4>日志</h4>
+                <textarea id="msg" readonly></textarea>
+                <label for="din" class="button">上传地址流文件</label>
+                <input type="file" id="din" onchange="newUpload();">
+                <button class="alert button" onclick="run();">继续</button>
+                <button class="alert button" onclick="singleStep();">单步</button>
+                <button class="alert button" onclick="resetAfterRun();">重置</button>
+                <br>
+                <span id="uploaded"></span>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <h4>指令缓存统计</h4>
+                <div id="inst-cache">
+                </div>
+                <h4>数据缓存统计</h4>
+                <div id="data-cache">
+                </div>
+            </div>
+            <div class="large-4 medium-4 columns">
+                <h4>指令缓存设置</h4>
+                <form id="inst-cache-control">
+                  <div class="row">
+                    <div class="medium-6 columns">
+                      <label>Cache size
+                        <input type="text" value="1024" id="inst-cache-size">
+                      </label>
+                    </div>
+                    <div class="medium-6 columns">
+                      <label>Block size
+                        <input type="text" value="64" id="inst-block-size">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="medium-12 columns">
+                      <label>Eviction policy</label>
+                        <input type="radio" name="eviction-inst" value="Random" id="eviction-inst-random" checked="true">
+                            <label for="eviction-inst-random">Random</label>
+                        <input type="radio" name="eviction-inst" value="LRU" id="eviction-inst-lru">
+                            <label for="eviction-inst-lru">LRU</label>
+                        <input type="radio" name="eviction-inst" value="FIFO" id="eviction-inst-fifo">
+                            <label for="eviction-inst-fifo">FIFO</label>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="medium-6 columns">
+                      <label>Associativity
+                        <input type="text" value="16" id="inst-assoc">
+                      </label>
+                    </div>
+                  </div>
+                </form>
+                <h4>数据缓存设置</h4>
+                <form id="data-cache-control">
+                  <div class="row">
+                    <div class="medium-6 columns">
+                      <label>Cache size
+                        <input type="text" value="1024" id="data-cache-size">
+                      </label>
+                    </div>
+                    <div class="medium-6 columns">
+                      <label>Block size
+                        <input type="text" value="64" id="data-block-size">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="medium-12 columns">
+                      <label>Eviction policy</label>
+                        <input type="radio" name="eviction-data" value="Random" id="eviction-data-random" checked="true">
+                            <label for="eviction-data-random">Random</label>
+                        <input type="radio" name="eviction-data" value="LRU" id="eviction-data-lru">
+                            <label for="eviction-data-lru">LRU</label>
+                        <input type="radio" name="eviction-data" value="FIFO" id="eviction-data-fifo">
+                            <label for="eviction-data-fifo">FIFO</label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="medium-6 columns">
+                      <label>Associativity
+                        <input type="text" value="16" id="data-assoc">
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="medium-12 columns">
+                      <label>Write policy</label>
+                        <input type="radio" name="write-data" value="wb" id="write-data-wb" checked="true">
+                            <label for="write-data-wb">Write back</label>
+                        <input type="radio" name="write-data" value="wt" id="write-data-wt">
+                            <label for="write-data-wt">Write through</label>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
